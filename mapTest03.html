@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #map {
+            margin: 0 auto;
+            margin-top: 25px;
+            border: 3px solid black;
+            width: 75%;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Interactive Map</h1>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+    <script>
+        var map = L.map('map').setView([-23.5421, -46.3833], 14);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var control = L.Routing.control({
+            waypoints: [
+                L.latLng(-23.5599, -46.3792),
+                L.latLng(-23.5431, -46.4098)
+            ],
+        }).addTo(map);
+    </script>
+</body>
+
+</html>
